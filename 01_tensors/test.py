@@ -1,24 +1,22 @@
 import torch 
 
-a = torch.tensor([1, 2, 3])
-b = torch.tensor([[1, 2], [3, 4]])
-print(a.dtype, b.dtype)
-print(b.shape, b.ndim)
-print(b.float().mean())
+#1. Make a 5 x 5 tensor of random numbers. Print the value in row 3, column 2 as a plain Python float.
+x = torch.tensor(5, 5)
+print(2, 1).item()
 
+#2. Make torch.arange(1, 11) and get only the even numbers using a boolean mask (t[t % 2 == 0]).
+t = torch.arange(1, 11)
+print(t[t % 2 == 0])
 
-z = torch.zeros(2, 3) # Creates a 2 × 3 tensor filled with zeros
-o = torch.ones(2, 3) # Creates a 2 × 3 tensor filled with ones
-r = torch.rand(2, 3) #Creates a 2 × 3 tensor filled with random numbers from 0-1.
-ar = torch.arange(0, 10, 2)
+#3. Create two 3 x 3 tensors. Compute their element-wise product and their matrix product. Explain in one sentence why they differ.
+a = torch.tensor([[1, 2, 3],
+                  [4, 5, 6],
+                  [7, 8, 9]])
 
-print(b[0]) #prints the first row of the matrix
-print(b[1]) #prints the second row of the matrix
-print(b[:, 0]) #prints the first column of the matrix
-print(b[:, 1]) #prints the second column of the matrix
-print(b[1, 0]) # row 2, column 1: 3.0, turn tensor into a python number
+b = torch.tensor([[1, 2, 3],
+                  [4, 5, 6],
+                  [7, 8, 9]])
 
-print(a + 10) 
-print(a * a)
-print(b @ b) # Creates a 2 × 3 tensor filled with zeros
-
+print(a * b)
+print(a @ b)
+#Element-wise product is the multiplication of corresponding elements in the 2 tensors, while the matrix product calculates dot product between rows and columns.

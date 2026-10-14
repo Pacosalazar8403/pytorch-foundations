@@ -1,11 +1,12 @@
 import torch
 
-x = torch.arange(12)            # shape [12]
-print(x.view(3, 4).shape)       # [3, 4]
-print(x.reshape(2, 6).shape)    # [2, 6]
-print(x.view(3, -1).shape)      # [3, 4]  -1 means "figure it out"
+m = torch.ones(3, 4)
+row = torch.tensor([1., 2., 3., 4.])     
+print((m + row)[0])                      
 
-img = torch.rand(3, 28, 28)              # one image: [channels, H, W]
-print(img.unsqueeze(0).shape)            # [1, 3, 28, 28]  add a batch dim
-print(img.unsqueeze(0).squeeze(0).shape) # [3, 28, 28]     remove it
-print(img.permute(1, 2, 0).shape)        # [28, 28, 3]     reorder dims (for matplotlib)
+col = torch.tensor([[10.], [20.], [30.]])  
+print((m + col)[:, 0])                     
+
+m + torch.ones(3)
+# RuntimeError: The size of tensor a (4) must match the size of tensor b (3)
+# at non-singleton dimension 1
